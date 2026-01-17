@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-inglu-dark: #0f172a;
+  --color-inglu-light: #f8fafc;
+  --color-inglu-primary: #3b82f6;
+  --color-inglu-accent: #8b5cf6;
+  
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  @apply bg-inglu-dark text-inglu-light antialiased;
+}
