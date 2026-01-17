@@ -1,54 +1,68 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
-
-const Counter = ({ from, to, duration = 2 }) => {
-    const nodeRef = useRef();
-    const inView = useInView(nodeRef, { once: true, margin: "-100px" });
-    const [count, setCount] = useState(from);
-
-    useEffect(() => {
-        if (inView) {
-            let startTime;
-            const step = (timestamp) => {
-                if (!startTime) startTime = timestamp;
-                const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-                setCount(Math.floor(progress * (to - from) + from));
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-    }, [inView, from, to, duration]);
-
-    return <span ref={nodeRef}>{count.toLocaleString()}</span>;
-};
+import CountUp from '../ui/CountUp';
+import ScrollFloat from '../ui/ScrollFloat';
+import { motion } from 'framer-motion';
 
 const stats = [
-    { label: 'Students Educated', value: 50000, suffix: '+' },
-    { label: 'Internships Provided', value: 100000, suffix: '+' },
-    { label: 'Brands Served', value: 1000, suffix: '+' },
-    { label: 'Events Organized', value: 500, suffix: '+' },
+    {
+        value: 100000,
+        label: 'Youth Impacted',
+        separator: ','
+    },
+    {
+        value: 18,
+        label: 'Countries'
+    },
+    {
+        value: 500,
+        label: 'Events Curated'
+    },
+    {
+        value: 1000,
+        label: 'Collaborations',
+        separator: ','
+    },
 ];
 
 const ImpactStats = () => {
     return (
-        <section className="py-20 bg-inglu-dark relative border-y border-white/5">
+        <section className="py-24 bg-inglu-dark relative">
+            <div className="max-w-7xl mx-auto px-6 text-center mb-16">
+                <ScrollFloat
+                    animationDuration={1}
+                    ease='back.inOut(2)'
+                    scrollStart='center bottom+=50%'
+                    scrollEnd='bottom bottom-=40%'
+                    stagger={0.03}
+                    containerClassName="mb-4"
+                    textClassName="text-4xl md:text-5xl font-bold text-white"
+                >
+                    The Impact We've Made
+                </ScrollFloat>
+            </div>
+
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/5 hover:border-inglu-primary/30 transition-colors group"
+                            transition={{ delay: index * 0.15 }}
+                            className="flex flex-col items-center"
                         >
-                            <h3 className="text-3xl md:text-5xl font-bold text-white mb-2 bg-gradient-to-br from-white to-gray-400 bg-clip-text text-transparent group-hover:from-inglu-primary group-hover:to-inglu-accent transition-all duration-300">
-                                <Counter from={0} to={stat.value} />{stat.suffix}
-                            </h3>
-                            <p className="text-gray-400 text-sm md:text-base font-medium text-balance">{stat.label}</p>
+                            <div className="text-5xl md:text-7xl font-bold mb-3">
+                                <CountUp
+                                    from={0}
+                                    to={stat.value}
+                                    separator={stat.separator || ''}
+                                    direction="up"
+                                    duration={2}
+                                    className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+                                />
+                                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">+</span>
+                            </div>
+                            <p className="text-gray-400 text-lg font-medium">{stat.label}</p>
                         </motion.div>
                     ))}
                 </div>

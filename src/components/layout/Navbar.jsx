@@ -21,18 +21,18 @@ const Navbar = () => {
         { name: 'Membership', href: '/membership' },
         { name: 'Shop', href: '/shop' },
         { name: 'Careers', href: '/careers' },
-        { name: "Let's Connect", href: '/contact' },
+        { name: 'About Us', href: '/about' },
     ];
 
     return (
         <>
             {/* Logo - Top Left Corner */}
             <Link to="/" className="fixed top-6 left-6 z-50 transition-transform hover:scale-105 bg-transparent">
-                <img src="/Logo.png" alt="INGLU Logo" className="h-16 w-auto object-contain" />
+                <img src="/logo.png" draggable="false" alt="INGLU Logo" className="h-16 w-auto object-contain" />
             </Link>
 
             {/* Nav Capsule */}
-            <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-fit max-w-[95vw] rounded-full bg-inglu-dark/80 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300">
+            <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-fit max-w-[95vw] rounded-full bg-inglu-dark/60 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300">
                 <div className="px-4 md:px-8 h-16 flex items-center justify-between md:justify-center">
 
                     {/* Desktop Links */}

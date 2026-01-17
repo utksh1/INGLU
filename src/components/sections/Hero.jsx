@@ -1,16 +1,19 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+
 const Hero = () => {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-inglu-dark pt-20">
+        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
+
+
             {/* Background Effects */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
                 <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-inglu-primary/20 rounded-full blur-[120px] animate-pulse" />
                 <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-inglu-accent/20 rounded-full blur-[120px] animate-pulse delay-1000" />
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}

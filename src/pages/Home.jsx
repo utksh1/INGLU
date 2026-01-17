@@ -1,16 +1,18 @@
 import Hero from '../components/sections/Hero';
-import ImpactStats from '../components/sections/ImpactStats';
 import E3Model from '../components/sections/E3Model';
 import KeySegments from '../components/sections/KeySegments';
+import Brands from '../components/sections/Brands';
+import Analytics from '../components/sections/Analytics';
 import Testimonials from '../components/sections/Testimonials';
 
 const Home = () => {
     return (
         <>
             <Hero />
-            <ImpactStats />
             <E3Model />
             <KeySegments />
+            <Brands />
+            <Analytics />
             <Testimonials />
         </>
     );
