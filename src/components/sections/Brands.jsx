@@ -1,31 +1,14 @@
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
-import LogoLoop from '../ui/LogoLoop';
 
 const Brands = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
     const brandLogos = [
-        { src: "https://logo.clearbit.com/google.com", alt: "Google", href: "https://google.com" },
-        { src: "https://logo.clearbit.com/microsoft.com", alt: "Microsoft", href: "https://microsoft.com" },
-        { src: "https://logo.clearbit.com/spotify.com", alt: "Spotify", href: "https://spotify.com" },
-        { src: "https://logo.clearbit.com/amazon.com", alt: "Amazon", href: "https://amazon.com" },
-        { src: "https://logo.clearbit.com/netflix.com", alt: "Netflix", href: "https://netflix.com" },
-        { src: "https://logo.clearbit.com/airbnb.com", alt: "Airbnb", href: "https://airbnb.com" },
-        { src: "https://logo.clearbit.com/uber.com", alt: "Uber", href: "https://uber.com" },
-        { src: "https://logo.clearbit.com/adobe.com", alt: "Adobe", href: "https://adobe.com" },
-        { src: "https://logo.clearbit.com/salesforce.com", alt: "Salesforce", href: "https://salesforce.com" },
-        { src: "https://logo.clearbit.com/zoom.us", alt: "Zoom", href: "https://zoom.us" }
+        { src: "https://www.vectorlogo.zone/logos/slack/slack-icon.svg", alt: "Slack", href: "#" },
+        { src: "https://www.vectorlogo.zone/logos/netflix/netflix-icon.svg", alt: "Netflix", href: "#" },
+        { src: "https://www.vectorlogo.zone/logos/google/google-icon.svg", alt: "Google", href: "#" },
+        { src: "https://www.vectorlogo.zone/logos/airbnb/airbnb-icon.svg", alt: "Airbnb", href: "#" },
+        { src: "https://www.vectorlogo.zone/logos/youtube/youtube-icon.svg", alt: "YouTube", href: "#" },
+        { src: "https://www.vectorlogo.zone/logos/instagram/instagram-icon.svg", alt: "Instagram", href: "#" }
     ];
-
-    const handlePrev = () => {
-        setCurrentIndex((prev) => (prev - 1 + brandLogos.length) % brandLogos.length);
-    };
-
-    const handleNext = () => {
-        setCurrentIndex((prev) => (prev + 1) % brandLogos.length);
-    };
 
     return (
         <section className="py-20">
@@ -39,42 +22,28 @@ const Brands = () => {
                     <h2 className="text-4xl font-bold text-white mb-4">Brands who used our services</h2>
                 </motion.div>
 
-                {/* Logo Carousel */}
-                <div className="relative">
-                    <div className="flex items-center justify-center gap-4">
-                        {/* Navigation Buttons */}
-                        <button
-                            onClick={handlePrev}
-                            className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
-                            aria-label="Previous brands"
+                {/* Simple Logo Grid */}
+                <div className="flex items-center justify-center flex-wrap gap-12 md:gap-16">
+                    {brandLogos.map((logo, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            whileHover={{ scale: 1.05 }}
+                            className="flex flex-col items-center gap-2"
                         >
-                            <ChevronLeft size={24} />
-                        </button>
-
-                        {/* Logo Loop Container */}
-                        <div className="flex-1 overflow-hidden">
-                            <LogoLoop
-                                logos={brandLogos}
-                                speed={80}
-                                direction="left"
-                                logoHeight={60}
-                                gap={40}
-                                pauseOnHover={true}
-                                hoverSpeed={0}
-                                scaleOnHover={true}
-                                className="w-full"
-                                ariaLabel="Partner brands"
+                            <img
+                                src={logo.src}
+                                alt={logo.alt}
+                                className="h-12 md:h-16 w-auto object-contain"
                             />
-                        </div>
-
-                        <button
-                            onClick={handleNext}
-                            className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
-                            aria-label="Next brands"
-                        >
-                            <ChevronRight size={24} />
-                        </button>
-                    </div>
+                            <span className="text-gray-400 text-sm md:text-base font-medium">
+                                {logo.alt}
+                            </span>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>
