@@ -16,7 +16,7 @@ const ContactSection = () => {
     };
 
     return (
-        <section className="py-24 bg-inglu-dark relative border-t border-white/5">
+        <section className="py-24 relative border-t border-white/5">
             <div className="max-w-5xl mx-auto px-6">
                 <div className="text-center mb-16">
                     <ScrollFloat

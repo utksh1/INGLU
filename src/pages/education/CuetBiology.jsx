@@ -49,7 +49,7 @@ const CuetBiology = () => {
     const [openFaq, setOpenFaq] = useState(null);
 
     return (
-        <div className="min-h-screen bg-inglu-dark text-gray-200 font-sans pt-20">
+        <div className="min-h-screen text-gray-200 font-sans pt-20">
 
             {/* Hero Section */}
             <section className="relative py-20 px-6 overflow-hidden">

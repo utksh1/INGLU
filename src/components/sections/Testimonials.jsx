@@ -74,7 +74,6 @@ const Testimonials = () => {
     return (
         <section className="py-24 relative overflow-hidden">
             {/* Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a2a] via-[#1a1a3a] to-[#200d42]" />
             <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-inglu-primary/10 to-transparent pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-inglu-accent/10 to-transparent pointer-events-none" />
 
@@ -110,7 +109,7 @@ const Testimonials = () => {
                                 <div className="absolute -top-8 -left-8 text-inglu-primary/20">
                                     <Quote size={80} />
                                 </div>
-                                
+
                                 <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-12 border border-white/20 shadow-2xl max-w-3xl mx-auto">
                                     {/* Rating Stars */}
                                     <div className="flex justify-center gap-1 mb-6">
@@ -127,9 +126,9 @@ const Testimonials = () => {
                                     {/* Author Info */}
                                     <div className="flex items-center justify-center gap-4">
                                         <div className="relative">
-                                            <img 
-                                                src={testimonials[currentIndex].image} 
-                                                alt={testimonials[currentIndex].name} 
+                                            <img
+                                                src={testimonials[currentIndex].image}
+                                                alt={testimonials[currentIndex].name}
                                                 className="w-16 h-16 rounded-full object-cover border-3 border-inglu-primary shadow-lg"
                                             />
                                             <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-inglu-primary rounded-full flex items-center justify-center">
@@ -172,13 +171,12 @@ const Testimonials = () => {
                                 setDirection(index > currentIndex ? 1 : -1);
                                 setCurrentIndex(index);
                             }}
-                            className={`relative group transition-all duration-300 ${
-                                index === currentIndex ? 'scale-110' : 'scale-100 opacity-60 hover:opacity-80'
-                            }`}
+                            className={`relative group transition-all duration-300 ${index === currentIndex ? 'scale-110' : 'scale-100 opacity-60 hover:opacity-80'
+                                }`}
                         >
-                            <img 
-                                src={testimonial.image} 
-                                alt={testimonial.name} 
+                            <img
+                                src={testimonial.image}
+                                alt={testimonial.name}
                                 className="w-12 h-12 rounded-full object-cover border-2 transition-all duration-300 ${
                                     index === currentIndex 
                                         ? 'border-inglu-primary shadow-lg shadow-inglu-primary/30' 

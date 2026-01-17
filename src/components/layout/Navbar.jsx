@@ -14,8 +14,7 @@ const Navbar = () => {
             href: '/education',
             dropdown: [
                 { name: 'CUET PYQs', href: '/education/cuet-pyqs' },
-                { name: 'Study Material', href: '/education/study-material' },
-                { name: 'Mentorship', href: '/education/mentorship' }
+                { name: 'Education Events', href: '/education/events' }
             ]
         },
         { name: 'Membership', href: '/membership' },

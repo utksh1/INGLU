@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Briefcase, Users, Target, TrendingUp, Award } from 'lucide-react';
 import { useState } from 'react';
 
 const Careers = () => {
@@ -29,66 +29,120 @@ const Careers = () => {
         {
             title: 'PUBLIC RELATIONS',
             duration: '2 months',
-            stipend: '7,500/month'
+            stipend: '7,500/month',
+            image: 'https://images.unsplash.com/photo-1573417087-4d99-4b42-81c2-712c8e78da?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'EVENT MANAGEMENT',
             duration: '2 months',
-            stipend: '6,000/month'
+            stipend: '6,000/month',
+            image: 'https://images.unsplash.com/photo-1542744175-3f52-9e2e-9e87-c7675d7f21?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'SOCIAL MEDIA MARKETING',
             duration: '2 months',
-            stipend: '5,000/month'
+            stipend: '5,000/month',
+            image: 'https://images.unsplash.com/photo-1611224942175-96d3d89640e5d8dcd1f0b6?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'STREAMER',
             duration: '2 months',
-            stipend: '5,000/month'
+            stipend: '5,000/month',
+            image: 'https://images.unsplash.com/photo-1573165174940-85ba1bb8c6a?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'SALES AND MARKETING',
             duration: '2 months',
-            stipend: '7,500-10,000/month'
+            stipend: '7,500-10,000/month',
+            image: 'https://images.unsplash.com/photo-1552664730-d6d62fda20?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'VIDEO EDITOR',
             duration: '2 months',
-            stipend: '7,500/month'
+            stipend: '7,500/month',
+            image: 'https://images.unsplash.com/photo-1611166946952-cc931b8f3f?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'WEB DEVELOPER',
             duration: '2 months',
-            stipend: '5,000/month'
+            stipend: '5,000/month',
+            image: 'https://images.unsplash.com/photo-1461749280689-d9a22c9a5a?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'APP DEVELOPER',
             duration: '2 months',
-            stipend: '5,000/month'
+            stipend: '5,000/month',
+            image: 'https://images.unsplash.com/photo-1512927710757-ad1c484208?auto=format&fit=crop&q=80&w=400'
         },
         {
             title: 'CAMPUS HEAD',
             duration: '2 months',
-            stipend: '5,000/month'
+            stipend: '5,000/month',
+            image: 'https://images.unsplash.com/photo-1521737604894-d14cc2379ce?auto=format&fit=crop&q=80&w=400'
         }
     ];
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-[#0a0a2a] to-[#200d42] pt-20">
             {/* Hero Section */}
-            <section className="relative py-20 overflow-hidden">
+            <section className="relative py-20 overflow-hidden min-h-screen">
                 <div className="max-w-7xl mx-auto px-6 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                            Build Your Future With <span className="bg-gradient-to-r from-inglu-primary to-inglu-accent bg-clip-text text-transparent">Inglu Global</span>
-                        </h1>
-                        <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                            Join a dynamic team shaping ideas, innovation, and global impact. At Inglu Global, we believe in empowering individuals with opportunities to grow, learn, and build meaningful careers. Explore roles that challenge your creativity and enhance your professional journey.
-                        </p>
+                        {/* VR Gaming Image */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                            <img 
+                                src="https://i0.wp.com/ingluglobal.in/wp-content/uploads/2023/11/7-Johny-Playing-VR-1-1.png?w=911"
+                                alt="VR Gaming Experience"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        
+                        <div className="relative z-10 mb-8">
+                            <div className="flex items-center justify-center gap-4 mb-6">
+                                <div className="p-3 rounded-full bg-inglu-primary/20 backdrop-blur-md border border-white/20">
+                                    <Briefcase className="w-8 h-8 text-inglu-primary" />
+                                </div>
+                                <div className="p-3 rounded-full bg-inglu-accent/20 backdrop-blur-md border border-white/20">
+                                    <Users className="w-8 h-8 text-inglu-accent" />
+                                </div>
+                                <div className="p-3 rounded-full bg-white/20 backdrop-blur-md border border-white/20">
+                                    <Target className="w-8 h-8 text-white" />
+                                </div>
+                            </div>
+                            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                                Build Your Future With <span className="bg-gradient-to-r from-inglu-primary to-inglu-accent bg-clip-text text-transparent">Inglu Global</span>
+                            </h1>
+                            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                                Join a dynamic team shaping ideas, innovation, and global impact. At Inglu Global, we believe in empowering individuals with opportunities to grow, learn, and build meaningful careers. Explore roles that challenge your creativity and enhance your professional journey.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div className="text-center">
+                                <div className="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20">
+                                    <TrendingUp className="w-8 h-8 text-inglu-primary mx-auto mb-2" />
+                                    <h3 className="text-lg font-semibold text-white">Real-World Experience</h3>
+                                    <p className="text-gray-300 text-sm">Hands-on training</p>
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <div className="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20">
+                                    <Award className="w-8 h-8 text-inglu-primary mx-auto mb-2" />
+                                    <h3 className="text-lg font-semibold text-white">Skill Enhancement</h3>
+                                    <p className="text-gray-300 text-sm">Professional growth</p>
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <div className="p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20">
+                                    <Users className="w-8 h-8 text-inglu-primary mx-auto mb-2" />
+                                    <h3 className="text-lg font-semibold text-white">Community & Networking</h3>
+                                    <p className="text-gray-300 text-sm">Build connections</p>
+                                </div>
+                            </div>
+                        </div>
                         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-4xl mx-auto border border-white/20">
                             <h2 className="text-2xl font-bold text-white mb-6">Kickstart Your Career</h2>
                             <p className="text-gray-300 mb-8">
@@ -97,6 +151,52 @@ const Careers = () => {
                             <p className="text-inglu-primary font-semibold mb-6">
                                 Kickstart your professional journey with hands-on experience.
                             </p>
+                        </div>
+                        
+                        {/* Additional Content to Fill Space */}
+                        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="text-left">
+                                <h3 className="text-2xl font-bold text-white mb-4">Why Choose INGLU?</h3>
+                                <ul className="space-y-3 text-gray-300">
+                                    <li className="flex items-center gap-2">
+                                        <div className="w-2 h-2 bg-inglu-primary rounded-full"></div>
+                                        <span>Industry-relevant skills development</span>
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <div className="w-2 h-2 bg-inglu-primary rounded-full"></div>
+                                        <span>Experienced mentorship guidance</span>
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <div className="w-2 h-2 bg-inglu-primary rounded-full"></div>
+                                        <span>Global networking opportunities</span>
+                                    </li>
+                                    <li className="flex items-center gap-2">
+                                        <div className="w-2 h-2 bg-inglu-primary rounded-full"></div>
+                                        <span>Certificate of completion</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="text-left">
+                                <h3 className="text-2xl font-bold text-white mb-4">Growth Journey</h3>
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-inglu-primary text-white flex items-center justify-center text-sm font-bold">1</div>
+                                        <span className="text-gray-300">Apply & Get Selected</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-inglu-primary text-white flex items-center justify-center text-sm font-bold">2</div>
+                                        <span className="text-gray-300">Learn & Work</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-inglu-primary text-white flex items-center justify-center text-sm font-bold">3</div>
+                                        <span className="text-gray-300">Enhance Skills</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-inglu-primary text-white flex items-center justify-center text-sm font-bold">4</div>
+                                        <span className="text-gray-300">Grow Your Career</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
@@ -123,10 +223,19 @@ const Careers = () => {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
                             >
-                                <h3 className="text-xl font-bold text-white mb-4">{program.title}</h3>
-                                <div className="space-y-2 text-gray-300">
-                                    <p><span className="font-semibold">Duration:</span> {program.duration}</p>
-                                    <p><span className="font-semibold">Stipend:</span> {program.stipend}</p>
+                                <div className="flex items-start gap-4">
+                                    <img 
+                                        src={program.image} 
+                                        alt={program.title} 
+                                        className="w-20 h-20 rounded-lg object-cover"
+                                    />
+                                    <div className="flex-1">
+                                        <h3 className="text-xl font-bold text-white mb-2">{program.title}</h3>
+                                        <div className="space-y-1 text-gray-300">
+                                            <p className="text-sm">Duration: <span className="text-inglu-primary font-semibold">{program.duration}</span></p>
+                                            <p className="text-sm">Stipend: <span className="text-inglu-primary font-semibold">{program.stipend}</span></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}
@@ -190,6 +299,10 @@ const Careers = () => {
                         <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
                             <h4 className="text-lg font-semibold text-white mb-3">Are internships remote or onsite?</h4>
                             <p className="text-gray-300">We offer both remote and onsite internship opportunities.</p>
+                        </div>
+                        <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
+                            <h4 className="text-lg font-semibold text-white mb-3">What's the application process?</h4>
+                            <p className="text-gray-300">Simple online application with quick response time.</p>
                         </div>
                     </div>
                 </div>

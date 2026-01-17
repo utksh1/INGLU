@@ -3,7 +3,7 @@ import { Target, Lightbulb, Users } from 'lucide-react';
 
 const About = () => {
     return (
-        <div className="min-h-screen bg-inglu-dark pb-20">
+        <div className="min-h-screen pb-20">
             {/* Hero */}
             <div className="relative py-32 bg-slate-900 border-b border-white/10 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10" />

@@ -10,6 +10,7 @@ import Membership from './pages/Membership';
 import Careers from './pages/Careers';
 import Shop from './pages/Shop';
 import Account from './pages/Account';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="careers" element={<Careers />} />
         <Route path="shop" element={<Shop />} />
         <Route path="account" element={<Account />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
     </Routes>
   )

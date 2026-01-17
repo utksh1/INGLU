@@ -72,7 +72,7 @@ const segments = [
 
 const KeySegments = () => {
     return (
-        <section className="py-24 bg-inglu-dark relative">
+        <section className="py-24 relative">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
                     <ScrollFloat
@@ -101,7 +101,7 @@ const KeySegments = () => {
                             transition={{ delay: idx * 0.1 }}
                             className={`${segment.className} rounded-3xl p-8 relative group overflow-hidden transition-all duration-300 hover:-translate-y-2`}
                         >
-                            <Link to={segment.link} className="block h-full flex flex-col items-center justify-center text-center">
+                            <div className="block h-full flex flex-col items-center justify-center text-center">
                                 <div className={`w-20 h-20 rounded-2xl ${segment.iconBg} flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 transition-transform duration-300 mx-auto`}>
                                     <img
                                         src={segment.iconImg}
@@ -113,7 +113,7 @@ const KeySegments = () => {
                                 <p className="text-white/80 text-sm leading-relaxed font-medium max-w-xs mx-auto">
                                     {segment.description}
                                 </p>
-                            </Link>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

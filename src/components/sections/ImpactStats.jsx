@@ -25,7 +25,7 @@ const stats = [
 
 const ImpactStats = () => {
     return (
-        <section className="py-24 bg-inglu-dark relative">
+        <section className="py-24 relative">
             <div className="max-w-7xl mx-auto px-6 text-center mb-16">
                 <ScrollFloat
                     animationDuration={1}

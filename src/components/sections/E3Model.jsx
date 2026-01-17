@@ -41,7 +41,7 @@ const E3Model = () => {
     const [active, setActive] = useState('enhancement');
 
     return (
-        <section className="py-12 bg-inglu-dark overflow-hidden">
+        <section className="py-12 overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-8">
                     <span className="text-inglu-primary font-semibold tracking-wider text-sm uppercase">Our Methodology</span>

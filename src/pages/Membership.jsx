@@ -53,7 +53,7 @@ const Membership = () => {
     };
 
     return (
-        <div className="min-h-screen bg-inglu-dark pt-20 pb-20">
+        <div className="min-h-screen pt-20 pb-20">
             {/* Hero Section */}
             <section className="relative px-6 py-20 text-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-inglu-primary/10 to-transparent pointer-events-none" />

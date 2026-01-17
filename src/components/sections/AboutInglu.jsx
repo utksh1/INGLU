@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 
 const AboutInglu = () => {
     return (
-        <section className="py-20 bg-inglu-dark relative overflow-hidden">
+        <section className="py-20 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <motion.div

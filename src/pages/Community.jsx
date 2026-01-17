@@ -33,7 +33,7 @@ const verticals = [
 
 const Community = () => {
     return (
-        <div className="min-h-screen bg-inglu-dark pb-20">
+        <div className="min-h-screen pb-20">
             {/* Header */}
             <div className="relative pt-32 pb-20 bg-slate-900 border-b border-white/10 overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">

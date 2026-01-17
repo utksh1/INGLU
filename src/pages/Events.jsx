@@ -69,7 +69,7 @@ const Events = () => {
         : events.filter(e => e.category === filter);
 
     return (
-        <div className="min-h-screen bg-inglu-dark pb-20">
+        <div className="min-h-screen pb-20">
             {/* Header */}
             <div className="relative pt-32 pb-20 bg-slate-900 border-b border-white/10 overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -94,8 +94,8 @@ const Events = () => {
                             key={cat}
                             onClick={() => setFilter(cat)}
                             className={`px-6 py-2 rounded-full border transition-all duration-300 font-medium ${filter === cat
-                                    ? 'bg-inglu-primary border-inglu-primary text-white shadow-lg shadow-blue-500/25'
-                                    : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
+                                ? 'bg-inglu-primary border-inglu-primary text-white shadow-lg shadow-blue-500/25'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
                                 }`}
                         >
                             {cat}
