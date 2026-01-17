@@ -1,81 +1,164 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, User, Home as HomeIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
 
     const links = [
-        { name: 'Education', href: '/education' },
-        { name: 'Events', href: '/events' },
-        { name: 'Community', href: '/community' },
-        { name: 'About', href: '/about' },
+        { name: 'Home', href: '/', icon: <HomeIcon size={18} /> },
+        {
+            name: 'Education',
+            href: '/education',
+            dropdown: [
+                { name: 'CUET PYQs', href: '/education/cuet-pyqs' },
+                { name: 'Study Material', href: '/education/study-material' },
+                { name: 'Mentorship', href: '/education/mentorship' }
+            ]
+        },
+        { name: 'Membership', href: '/membership' },
+        { name: 'Shop', href: '/shop' },
+        { name: 'Careers', href: '/careers' },
+        { name: "Let's Connect", href: '/contact' },
     ];
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-inglu-dark/80 backdrop-blur-md border-b border-white/10">
-            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                {/* Logo */}
-                <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-inglu-primary to-inglu-accent bg-clip-text text-transparent">
-                    INGLU
-                </Link>
+        <>
+            {/* Logo - Top Left Corner */}
+            <Link to="/" className="fixed top-6 left-6 z-50 transition-transform hover:scale-105 bg-transparent">
+                <img src="/Logo.png" alt="INGLU Logo" className="h-16 w-auto object-contain" />
+            </Link>
 
-                {/* Desktop Links */}
-                <div className="hidden md:flex items-center space-x-8">
-                    {links.map((link) => (
-                        <Link
-                            key={link.name}
-                            to={link.href}
-                            className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                </div>
+            {/* Nav Capsule */}
+            <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-fit max-w-[95vw] rounded-full bg-inglu-dark/80 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300">
+                <div className="px-4 md:px-8 h-16 flex items-center justify-between md:justify-center">
 
-                {/* CTA Button */}
-                <div className="hidden md:block">
-                    <button className="px-5 py-2.5 rounded-full bg-inglu-primary hover:bg-blue-600 transition-colors text-white text-sm font-semibold cursor-pointer">
-                        Get Involved
-                    </button>
-                </div>
-
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-white"
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
-
-            {/* Mobile Sidebar */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-20 left-0 right-0 bg-inglu-dark border-b border-white/10 p-6 md:hidden flex flex-col space-y-4 shadow-xl"
-                    >
+                    {/* Desktop Links */}
+                    <div className="hidden md:flex items-center justify-center space-x-8 w-full">
                         {links.map((link) => (
+                            <div key={link.name} className="relative group">
+                                {link.dropdown ? (
+                                    <div
+                                        className="relative"
+                                        onMouseEnter={() => setActiveDropdown(link.name)}
+                                        onMouseLeave={() => setActiveDropdown(null)}
+                                    >
+                                        <button className="text-gray-300 hover:text-white transition-colors text-sm font-medium flex items-center gap-1 py-4">
+                                            {link.name} <ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
+                                        </button>
+
+                                        {/* Dropdown Menu */}
+                                        <AnimatePresence>
+                                            {activeDropdown === link.name && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: 10 }}
+                                                    transition={{ duration: 0.2 }}
+                                                    className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-48"
+                                                >
+                                                    <div className="bg-inglu-dark/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-xl p-2 flex flex-col gap-1">
+                                                        {link.dropdown.map((subLink) => (
+                                                            <Link
+                                                                key={subLink.name}
+                                                                to={subLink.href}
+                                                                className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors text-center"
+                                                            >
+                                                                {subLink.name}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
+                                ) : (
+                                    <Link
+                                        to={link.href}
+                                        className="text-gray-300 hover:text-white transition-colors text-sm font-medium flex items-center gap-2"
+                                    >
+                                        {link.icon && link.icon}
+                                        <span>{link.name}</span>
+                                    </Link>
+                                )}
+                            </div>
+                        ))}
+
+                        {/* My Account Button */}
+                        <Link to="/account" className="pl-4 border-l border-white/10 flex items-center gap-2 text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                            <User size={18} />
+                            <span>My Account</span>
+                        </Link>
+                    </div>
+
+                    {/* Mobile Menu Button - Right side of capsule */}
+                    <div className="md:hidden flex items-center justify-between w-full">
+                        <span className="text-sm font-medium text-gray-400">Menu</span>
+                        <button
+                            className="text-white p-1"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Mobile Sidebar */}
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-0 right-0 mt-4 mx-2 rounded-2xl bg-inglu-dark/95 backdrop-blur-xl border border-white/10 p-6 md:hidden flex flex-col space-y-2 shadow-2xl overflow-y-auto max-h-[80vh]"
+                        >
+                            {links.map((link) => (
+                                <div key={link.name}>
+                                    {link.dropdown ? (
+                                        <div className="space-y-2">
+                                            <div className="text-gray-400 text-xs font-semibold uppercase tracking-wider px-2 pt-2">{link.name}</div>
+                                            <div className="pl-4 border-l-2 border-white/5 space-y-1">
+                                                {link.dropdown.map(subLink => (
+                                                    <Link
+                                                        key={subLink.name}
+                                                        to={subLink.href}
+                                                        className="block text-gray-300 hover:text-white text-base font-medium p-2 hover:bg-white/5 rounded-lg transition-colors"
+                                                        onClick={() => setIsOpen(false)}
+                                                    >
+                                                        {subLink.name}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <Link
+                                            to={link.href}
+                                            className="flex items-center gap-3 text-gray-300 hover:text-white text-lg font-medium p-3 hover:bg-white/5 rounded-lg transition-colors"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            {link.icon}
+                                            {link.name}
+                                        </Link>
+                                    )}
+                                </div>
+                            ))}
+                            <div className="h-px bg-white/10 my-2"></div>
                             <Link
-                                key={link.name}
-                                to={link.href}
-                                className="text-gray-300 hover:text-white text-lg font-medium"
+                                to="/account"
+                                className="flex items-center gap-3 text-gray-300 hover:text-white text-lg font-medium p-3 hover:bg-white/5 rounded-lg transition-colors"
                                 onClick={() => setIsOpen(false)}
                             >
-                                {link.name}
+                                <User size={20} />
+                                My Account
                             </Link>
-                        ))}
-                        <button className="w-full py-3 rounded-full bg-inglu-primary hover:bg-blue-600 transition-colors text-white font-semibold cursor-pointer">
-                            Get Involved
-                        </button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </nav>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </nav>
+        </>
     );
 };
 
