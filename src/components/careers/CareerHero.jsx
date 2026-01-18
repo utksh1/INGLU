@@ -1,78 +1,63 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
-const CareerHero = ({ scrollToJobs }) => {
+const CareerHero = () => {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white pt-20">
-            {/* Ambient Background */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px]" />
+        <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950">
+            {/* Background Image & Effects */}
+            <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-[#05050A]/90 z-10" />
+                <img
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070"
+                    alt="Careers"
+                    className="w-full h-full object-cover opacity-60"
+                />
+
+                {/* Ambient Effects */}
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse pointer-events-none z-20" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse delay-700 pointer-events-none z-20" />
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="flex justify-center mb-6"
+                    transition={{ duration: 0.8 }}
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
-                        <Sparkles size={16} className="text-yellow-400" />
-                        <span className="text-sm font-medium tracking-wide text-gray-200 uppercase">We are Hiring</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-blue-400 text-sm font-medium mb-8 backdrop-blur-sm">
+                        <Sparkles size={16} />
+                        <span>Join the Revolution</span>
+                    </div>
+
+                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-tight">
+                        Don't Just Work. <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                            Build Your Legacy.
+                        </span>
+                    </h1>
+
+                    <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                        Join a community of dreamers and doers. Gain real-world experience, mentorship, and the skills you need to lead the future.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-8 py-4 rounded-full bg-blue-600 text-white font-bold text-lg flex items-center gap-2 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/25"
+                        >
+                            Explore Opportunities <ArrowRight size={20} />
+                        </motion.button>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-8 py-4 rounded-full bg-white/5 text-white font-semibold text-lg border border-white/10 hover:bg-white/10 transition-all backdrop-blur-sm"
+                        >
+                            Why Work With Us
+                        </motion.button>
                     </div>
                 </motion.div>
-
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]"
-                >
-                    Don't Just Watch <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-                        The Revolution.
-                    </span>
-                    <br />
-                    <span className="text-white">Build It.</span>
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
-                >
-                    Join a global team of dreamers and doers. We give you the platform, the mentorship, and the freedom to turn "what if" into "what is."
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                >
-                    <button
-                        onClick={scrollToJobs}
-                        className="px-8 py-4 bg-white text-slate-950 rounded-full font-bold text-lg hover:bg-gray-100 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-white/10 w-full sm:w-auto"
-                    >
-                        Explore Opportunities
-                    </button>
-                    <button className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105 active:scale-95 backdrop-blur-sm w-full sm:w-auto">
-                        Why Join Us?
-                    </button>
-                </motion.div>
             </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500 flex flex-col items-center gap-2"
-            >
-                <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent" />
-            </motion.div>
         </section>
     );
 };

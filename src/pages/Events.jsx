@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, ArrowRight, Filter } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Filter, Sparkles } from 'lucide-react';
+import ParallaxFloatingElements from '../components/common/ParallaxFloatingElements';
 
 const events = [
     {
@@ -28,7 +29,7 @@ const events = [
         date: 'Feb 10, 2026',
         location: 'Delhi Arena',
         image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800',
-        description: ' compete for a prize pool of ₹50,000 in the ultimate showdown.'
+        description: 'Compete for a prize pool of ₹50,000 in the ultimate showdown.'
     },
     {
         id: 4,
@@ -69,43 +70,68 @@ const Events = () => {
         : events.filter(e => e.category === filter);
 
     return (
-        <div className="min-h-screen pb-20">
-            {/* Header */}
-            <div className="relative pt-32 pb-20 bg-slate-900 border-b border-white/10 overflow-hidden">
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-50%] left-[-20%] w-[70%] h-[70%] bg-inglu-accent/10 rounded-full blur-[100px]" />
+        <div className="min-h-screen bg-[#05050A] relative overflow-hidden">
+            <ParallaxFloatingElements />
+
+            {/* Hero Section */}
+            <div className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070"
+                        alt="Events Background"
+                        className="w-full h-full object-cover opacity-60"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#05050A]/80 via-[#05050A]/50 to-[#05050A]" />
                 </div>
 
-                <div className="relative max-w-7xl mx-auto px-6 text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Events & Travels</h1>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                        Explore the world, learn new skills, and compete with the best.
-                        Join our upcoming experiences.
-                    </p>
+                <div className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white text-sm font-medium mb-6">
+                            <Sparkles size={14} className="text-yellow-400" />
+                            <span>Unforgettable Experiences</span>
+                        </div>
+                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                            Events & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Travels</span>
+                        </h1>
+                        <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                            Explore the world, learn new skills, and compete with the best.
+                            Join a community that never stops moving.
+                        </p>
+                    </motion.div>
                 </div>
             </div>
 
             {/* Content */}
-            <div className="max-w-7xl mx-auto px-6 py-12">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
                 {/* Filter */}
-                <div className="flex flex-wrap justify-center gap-4 mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="flex flex-wrap justify-center gap-4 mb-16"
+                >
                     {categories.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setFilter(cat)}
-                            className={`px-6 py-2 rounded-full border transition-all duration-300 font-medium ${filter === cat
-                                ? 'bg-inglu-primary border-inglu-primary text-white shadow-lg shadow-blue-500/25'
-                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10 hover:text-white'
+                            className={`px-6 py-3 rounded-full border transition-all duration-300 font-medium text-sm backdrop-blur-md ${filter === cat
+                                ? 'bg-white/10 border-white/20 text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]'
+                                : 'bg-white/5 border-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
                                 }`}
                         >
                             {cat}
                         </button>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Grid */}
                 <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <AnimatePresence>
+                    <AnimatePresence mode='popLayout'>
                         {filteredEvents.map((event) => (
                             <motion.div
                                 layout
@@ -114,35 +140,39 @@ const Events = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
-                                className="group bg-slate-800/50 rounded-2xl overflow-hidden border border-white/5 hover:border-inglu-primary/30 transition-all hover:shadow-xl hover:shadow-blue-500/10"
+                                className="group relative bg-[#0A0A12] rounded-[2rem] overflow-hidden border border-white/5 hover:border-white/10 transition-all hover:shadow-2xl hover:shadow-blue-500/10"
                             >
-                                <div className="relative h-48 overflow-hidden">
+                                <div className="relative h-64 overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A12] via-transparent to-transparent z-10" />
                                     <img
                                         src={event.image}
                                         alt={event.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
-                                    <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-white border border-white/10">
+                                    <div className="absolute top-4 right-4 z-20 bg-black/40 backdrop-blur-xl px-4 py-2 rounded-full text-xs font-bold text-white border border-white/10 shadow-lg">
                                         {event.category}
                                     </div>
                                 </div>
-                                <div className="p-6">
-                                    <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                                        <div className="flex items-center gap-1">
-                                            <Calendar size={14} className="text-inglu-primary" />
+                                <div className="p-8 relative z-20 -mt-12">
+                                    <div className="flex items-center gap-4 text-xs font-medium text-gray-400 mb-4 bg-[#0A0A12]/80 backdrop-blur-md w-fit px-4 py-2 rounded-full border border-white/5">
+                                        <div className="flex items-center gap-1.5">
+                                            <Calendar size={12} className="text-blue-400" />
                                             <span>{event.date}</span>
                                         </div>
-                                        <div className="flex items-center gap-1">
-                                            <MapPin size={14} className="text-inglu-primary" />
+                                        <div className="w-1 h-1 rounded-full bg-gray-600" />
+                                        <div className="flex items-center gap-1.5">
+                                            <MapPin size={12} className="text-purple-400" />
                                             <span>{event.location}</span>
                                         </div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-inglu-primary transition-colors">{event.title}</h3>
-                                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+
+                                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">{event.title}</h3>
+                                    <p className="text-gray-400 text-sm mb-8 leading-relaxed line-clamp-2">
                                         {event.description}
                                     </p>
-                                    <button className="w-full py-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 transition-colors text-white font-medium flex items-center justify-center gap-2 group/btn">
-                                        Register Now <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+
+                                    <button className="w-full py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all text-white font-semibold flex items-center justify-center gap-2 group/btn hover:border-white/20">
+                                        Register Now <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
                                     </button>
                                 </div>
                             </motion.div>

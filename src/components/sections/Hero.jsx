@@ -7,10 +7,16 @@ const Hero = () => {
         <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
 
 
-            {/* Background Effects */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-inglu-primary/20 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-inglu-accent/20 rounded-full blur-[120px] animate-pulse delay-1000" />
+            {/* Background Image & Effects */}
+            <div className="absolute inset-0 overflow-hidden z-0">
+                <div className="absolute inset-0 bg-black/60 z-10" /> {/* Overlay */}
+                <img
+                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070"
+                    alt="Background"
+                    className="w-full h-full object-cover opacity-50"
+                />
+                <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-inglu-primary/20 rounded-full blur-[120px] animate-pulse z-20" />
+                <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-inglu-accent/20 rounded-full blur-[120px] animate-pulse delay-1000 z-20" />
             </div>
 
             <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">

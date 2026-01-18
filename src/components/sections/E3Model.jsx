@@ -1,83 +1,124 @@
 import { motion } from 'framer-motion';
-import { Target, Zap, Rocket } from 'lucide-react';
 import ScrollFloat from '../ui/ScrollFloat';
+import { useState } from 'react';
+import { BookOpen, TrendingUp, Music } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
-const e3Data = [
+const pillars = [
     {
-        title: 'Experience',
-        description: 'We provide hands-on experience through real-world projects and events.',
-        icon: <Zap className="w-8 h-8 text-yellow-400" />,
-        gradient: 'from-orange-400 to-amber-500'
+        id: 'education',
+        title: 'Education',
+        subtitle: 'Skill-Based Learning',
+        icon: BookOpen,
+        description: 'INGLU GLOBAL is focusing on providing skill-based learning for youth to help them grow practically for their future.',
+        stats: '500+ Workshops',
+        color: 'from-blue-500 to-blue-700',
+        lottieUrl: 'https://lottie.host/5c0504aa-7c48-406e-a650-8b7b8c948b81/WRBLIDsFey.lottie'
     },
     {
-        title: 'Educate',
-        description: 'Continuous learning through workshops, mentorship, and peer collaboration.',
-        icon: <Target className="w-8 h-8 text-blue-400" />,
-        gradient: 'from-blue-500 to-cyan-500'
+        id: 'enhancement',
+        title: 'Enhancement',
+        subtitle: 'Growth & Development',
+        icon: TrendingUp,
+        description: 'Enhancing the skills of the youth is most crucial part which important for the development of youth.',
+        stats: '100k+ Internships',
+        color: 'from-purple-500 to-purple-700',
+        lottieUrl: 'https://lottie.host/999cff57-d178-4e9a-819d-720094f6be97/dZgV6rOGGU.lottie'
     },
     {
-        title: 'Empower',
-        description: 'Giving you the platform and resources to lead, create, and inspire others.',
-        icon: <Rocket className="w-8 h-8 text-purple-400" />,
-        gradient: 'from-purple-500 to-pink-500'
+        id: 'entertainment',
+        title: 'Entertainment',
+        subtitle: 'Events & Fun',
+        icon: Music,
+        description: 'Holistic development is not possible without proper mixture of entertainment with the work and enhancement.',
+        stats: '500+ Events',
+        color: 'from-pink-500 to-pink-700',
+        lottieUrl: 'https://lottie.host/cbb5bb95-15b0-4149-bb72-bd486cda9f9b/zMvSxo1dLb.lottie'
     }
 ];
 
 const E3Model = () => {
-    return (
-        <section className="py-24 bg-slate-950 relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-                <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-blue-600/30 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-purple-600/30 rounded-full blur-[100px]" />
-            </div>
+    const [active, setActive] = useState('enhancement');
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="text-center mb-16">
+    return (
+        <section className="py-12 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-8">
+                    <span className="text-inglu-primary font-semibold tracking-wider text-sm uppercase">Our Methodology</span>
                     <ScrollFloat
                         animationDuration={1}
                         ease='back.inOut(2)'
                         scrollStart='center bottom+=50%'
                         scrollEnd='bottom bottom-=40%'
                         stagger={0.03}
-                        containerClassName="mb-4"
-                        textClassName="text-4xl md:text-5xl font-bold text-white uppercase tracking-tight"
+                        containerClassName="mt-2 mb-4"
+                        textClassName="text-4xl md:text-5xl font-bold text-white"
                     >
                         The E3 Model
                     </ScrollFloat>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        Our core philosophy that drives every initiative and empowers every individual at INGLU.
+                    <p className="text-gray-400 max-w-2xl mx-auto text-base">
+                        A holistic approach to youth development, combining learning, growth, and fun.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {e3Data.map((item, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.2, duration: 0.5 }}
-                            whileHover={{ y: -10 }}
-                            className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl relative overflow-hidden group"
-                        >
-                            <div className={`absolute top-0 right-0 p-32 bg-gradient-to-br ${item.gradient} opacity-5 blur-2xl rounded-full translate-x-12 -translate-y-12 transition-opacity group-hover:opacity-10`} />
+                <div className="flex flex-col md:flex-row gap-6 min-h-[320px]">
+                    {pillars.map((pillar) => {
+                        const isActive = active === pillar.id;
+                        return (
+                            <motion.div
+                                key={pillar.id}
+                                layout
+                                onClick={() => setActive(pillar.id)}
+                                className={`relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-500 ease-in-out border border-white/10 ${isActive ? 'md:flex-[3] bg-slate-900/50' : 'md:flex-[1] bg-slate-900/20 hover:bg-slate-900/40'} flex-1`}
+                            >
+                                {/* Background Gradient */}
+                                {isActive && (
+                                    <div className={`absolute inset-0 bg-gradient-to-br ${pillar.color} opacity-10 transition-opacity duration-500`} />
+                                )}
 
-                            <div className="relative z-10">
-                                <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6 border border-white/5 group-hover:scale-110 transition-transform duration-300">
-                                    {item.icon}
+                                {/* Content */}
+                                <div className="relative h-full p-4 flex flex-col justify-end">
+                                    {pillar.lottieUrl && (
+                                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
+                                            <div className={`${isActive ? 'w-72 h-72 md:w-96 md:h-96' : 'w-24 h-24 md:w-32 md:h-32'} transition-all duration-500 rounded-3xl overflow-hidden mix-blend-lighten opacity-80`}>
+                                                <DotLottieReact
+                                                    src={pillar.lottieUrl}
+                                                    loop
+                                                    autoplay
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+                                    <div className={`absolute top-4 left-4 p-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md ${isActive ? 'text-white bg-inglu-primary/20' : 'text-gray-400'}`}>
+                                        <pillar.icon size={20} />
+                                    </div>
+
+                                    <motion.div layout="position" className="z-20 relative">
+                                        <h3 className={`text-xl font-bold mb-1 ${isActive ? 'text-white' : 'text-gray-300'}`}>{pillar.title}</h3>
+                                        <p className="text-inglu-primary font-medium mb-2 text-sm">{pillar.subtitle}</p>
+                                    </motion.div>
+
+                                    {isActive && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.2, duration: 0.4 }}
+                                        >
+                                            <p className="text-gray-300 mb-4 leading-relaxed text-sm max-w-md">
+                                                {pillar.description}
+                                            </p>
+                                            <div className="inline-block px-2 py-1 rounded-lg bg-white/5 border border-white/10 text-base font-bold text-white">
+                                                {pillar.stats}
+                                            </div>
+                                        </motion.div>
+                                    )}
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
-                                <p className="text-gray-400 leading-relaxed">
-                                    {item.description}
-                                </p>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        )
+                    })}
                 </div>
             </div>
         </section>
     );
 };
-
 export default E3Model;
