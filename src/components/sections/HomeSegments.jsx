@@ -166,8 +166,8 @@ const SegmentCard = ({ segment }) => {
             `}
         >
             <div className={`w-16 h-16 rounded-2xl ${segment.bgIcon} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl overflow-hidden`}>
-                <img 
-                    src={segment.image} 
+                <img
+                    src={segment.image}
                     alt={segment.title}
                     className="w-full h-full object-cover"
                 />
