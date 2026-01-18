@@ -55,7 +55,12 @@ const Footer = () => {
 
                             <div className="flex space-x-4 pt-4">
                                 {[Facebook, Linkedin, Youtube, Instagram].map((Icon, idx) => (
-                                    <a key={idx} href="#" className="text-gray-400 hover:text-white transition-colors">
+                                    <a
+                                        key={idx}
+                                        href="#"
+                                        className="text-gray-400 hover:text-white transition-colors"
+                                        aria-label={`Visit our ${['Facebook', 'LinkedIn', 'YouTube', 'Instagram'][idx]} page`}
+                                    >
                                         <Icon size={20} />
                                     </a>
                                 ))}
