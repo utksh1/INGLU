@@ -29,9 +29,9 @@ const Hero = () => {
                         Join 50,000+ Students Worldwide
                     </span>
                     <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-                        Experience. Enhance. <br />
+                        Educate. Enhance. <br />
                         <span className="bg-gradient-to-r from-inglu-primary to-inglu-accent bg-clip-text text-transparent">
-                            Entertain.
+                            Enjoy.
                         </span>
                     </h1>
                     <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
