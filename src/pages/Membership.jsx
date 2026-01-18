@@ -5,7 +5,7 @@ import ParallaxFloatingElements from '../components/common/ParallaxFloatingEleme
 
 const Membership = () => {
     return (
-        <div className="min-h-screen bg-[#05050A] text-white overflow-hidden relative">
+        <div className="min-h-screen text-white overflow-hidden relative">
             <ParallaxFloatingElements />
             <MembershipHero />
             <MembershipWhyJoin />

@@ -5,12 +5,17 @@
   --color-inglu-light: #f8fafc;
   --color-inglu-primary: #3b82f6;
   --color-inglu-accent: #8b5cf6;
-  
+
+  --color-bg-base: #05050A;
+  --color-bg-surface: #0F1016;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+
   --font-sans: 'Inter', sans-serif;
 }
 
 body {
-  @apply bg-gradient-to-br from-[#0a0a2a] to-[#200d42] text-inglu-light antialiased;
+  @apply bg-gradient-to-br from-[var(--color-bg-base)] via-[#0A0A0F] to-[var(--color-bg-base)] text-[var(--color-text-primary)] antialiased min-h-screen;
 }
 
 /* Animation for cell ripple effect */
@@ -19,10 +24,12 @@ body {
     opacity: 0.4;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.1);
   }
+
   100% {
     opacity: 0.4;
     transform: scale(1);

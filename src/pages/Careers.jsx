@@ -8,7 +8,7 @@ import ParallaxFloatingElements from '../components/common/ParallaxFloatingEleme
 
 const Careers = () => {
     return (
-        <div className="min-h-screen bg-[#05050A] text-white overflow-hidden relative">
+        <div className="min-h-screen text-white overflow-hidden relative">
             <ParallaxFloatingElements />
             <CareerHero />
             <WhyJoin />

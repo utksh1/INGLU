@@ -70,7 +70,7 @@ const Events = () => {
         : events.filter(e => e.category === filter);
 
     return (
-        <div className="min-h-screen bg-[#05050A] relative overflow-hidden">
+        <div className="min-h-screen relative overflow-hidden">
             <ParallaxFloatingElements />
 
             {/* Hero Section */}
